@@ -1,0 +1,6 @@
+venv/
+.vscode/
+functions/__pycache__/
+*.pyc
+.DS_Store
+dianping.log
