@@ -47,6 +47,7 @@ class Controller():
             city_id = spider_config.LOCATION_ID
             self.base_url = 'http://www.dianping.com/search/keyword/' + str(city_id) + '/' + str(
                 channel_id) + '_' + str(keyword) + '/p'
+            print(f"基础搜索URL为：{self.base_url}")
             pass
         else:
             # 末尾加一个任意字符，为了适配两种初始化url切割长度
@@ -77,6 +78,7 @@ class Controller():
                 '店铺均分': -,
                 '推荐菜': -,
                 '店铺总分': -,
+                '店铺分类': -,
             }
             """
             search_res = self.s.search(search_url, request_type)
@@ -170,6 +172,7 @@ class Controller():
                     each_search_res['优惠券信息'] = each_detail_res['优惠券信息']
                     each_search_res['店铺纬度'] = each_detail_res['店铺纬度']
                     each_search_res['店铺经度'] = each_detail_res['店铺经度']
+                    each_search_res['店铺分类'] = str(spider_config.KEYWORD)
                 # 爬取评论
                 if spider_config.NEED_REVIEW:
                     shop_id = each_search_res['店铺id']
