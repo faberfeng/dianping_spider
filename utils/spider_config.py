@@ -48,9 +48,10 @@ class Config():
         assert self.SEARCH_URL == '' or self.SEARCH_URL.endswith('p'), 'search_url 没有拼接p'
         self.NEED_FIRST = True if global_config.getRaw('detail', 'need_first') == 'True' else False
         try:
+            self.START_PAGE = int(global_config.getRaw('detail', 'start_page'))
             self.NEED_SEARCH_PAGES = int(global_config.getRaw('detail', 'need_pages'))
         except:
-            logger.error('need_pages 必须为整数')
+            logger.error('start_page 和 need_pages 必须为整数')
             exit()
 
         # config 的 proxy
